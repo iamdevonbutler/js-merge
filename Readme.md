@@ -1,0 +1,1 @@
+# Functional object assign (alpha)
