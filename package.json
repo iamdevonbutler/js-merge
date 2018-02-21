@@ -1,0 +1,22 @@
+{
+  "name": "functional-object-assign",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamdevonbutler/functional-object-assign.git"
+  },
+  "author": "Jay Pescione <jpescione@gmail.com> (https://github.com/iamdevonbutler)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iamdevonbutler/functional-object-assign/issues"
+  },
+  "homepage": "https://github.com/iamdevonbutler/functional-object-assign#readme"
+}
