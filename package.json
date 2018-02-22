@@ -1,10 +1,11 @@
 {
   "name": "functional-object-assign",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Functional object assign",
   "main": "lib/index.js",
   "directories": {
-    "lib": "lib"
+    "lib": "lib",
+    "tests": "tests"
   },
   "scripts": {
     "test": "NODE_ENV=test ./node_modules/.bin/mocha --ui bdd --bail --colors ./tests/**/*.js"
@@ -19,7 +20,10 @@
     "url": "https://github.com/iamdevonbutler/functional-object-assign/issues"
   },
   "keywords": [
-    "object assign"
+    "js",
+    "node",
+    "javascript",
+    "assign"
   ],
   "homepage": "https://github.com/iamdevonbutler/functional-object-assign#readme",
   "devDependencies": {
