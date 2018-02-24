@@ -35,6 +35,7 @@ function isEqual(...objs) {
         }
       }
     }
+    return true;
   };
 
   function compareArrays(obj, obj1) {
@@ -63,19 +64,20 @@ function isEqual(...objs) {
   };
 
   for (let i in objs) {
+    i = +i;
     if (objs[i+1] !== undefined) {
       if (isArray(objs[i])) {
         if (!compareArrays(objs[i], objs[i+1])) {
           return false;
         }
       }
-      else if (isDate(objs[i])) {
-        if (!compateDates(objs[i], objs[i+1])) {
+      else if (isObject(objs[i])) {
+        if (!compareObjects(objs[i], objs[i+1])) {
           return false;
         }
       }
-      else if (isObject(objs[i])) {
-        if (!compareObjects(objs[i], objs[i+1])) {
+      else if (isDate(objs[i])) {
+        if (!compateDates(objs[i], objs[i+1])) {
           return false;
         }
       }
@@ -101,29 +103,6 @@ function isObject(obj) {
 function isDate(obj) {
   return obj instanceof Date;
 }
-
-// console.log(isEqual({a: 1, b: 2}, {a: 1, b: 2}));
-// return;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 var obj = {
   a: 1,
@@ -179,6 +158,9 @@ var expected = {
   h: expectedArray,
 };
 
+console.log( isEqual([1, {a: [1, {a: 1}]}], [1, {a: [1, {a: 1}]}]) );
+return;
+
 describe('functional-object-assign tests', () => {
   it ('should properly assign new values', () => {
     expect(isEqual(actual, expected)).to.be.true;
@@ -194,7 +176,6 @@ describe('functional-object-assign tests', () => {
     expect(isEqual(actual, expected)).to.be.true;
     array.push(99);
     expect(isEqual(actual, expected)).to.be.true;
-
   });
   it ('should not reference the src objects - when a nested src array is mutated', () => {
     nestedArray.push(99);
