@@ -4,72 +4,90 @@ const should = require('chai').should();
 const expect = require('chai').expect;
 const assert = require('chai').assert;
 
-// @todo compare arrays too.
-// dates .getTime() instanceof Date
 // what happens when given no params or just one.
 // rename js-package-name
-function deepEqual(...objs) {
-  var equal = true;
-  function compareArrays(obj, obj1) {
-    let equal = true;
-    obj[key].forEach((item, i) => {
-      if (isObject(obj[key])) {
-        if (!deepEqual(obj[key], obj1[key])) {
-          equal = false;
-        }
-      }
-      else if (obj[key] !== obj1[key]) {
-        equal = false;
-      }
-    });
-  }
-  function compareObjects(obj, obj1) {
-    for (let key in obj) {
-      if (obj1[key] === undefined) {
+// fix all uses of istype for objects. need to not be a date.
+function isEqual(...objs) {
+
+  function compare(obj, obj1) {
+    for (let i in obj) {
+      if (obj1[i] === undefined) {
         return false;
       }
-      if (isArray(obj[key])) {
-        if (!compareArrays(obj[key], obj1[key])) {
+      if (isArray(obj[i])) {
+        if (!compareArrays(obj[i], obj1[i])) {
           return false;
         }
       }
-      else if (isDate(obj[key])) {
-        if (!(obj1[key] instanceof Date) || obj[key].getTime() !== obj1[key].getTime()) {
+      else if (isObject(obj[i])) {
+        if (!compareObjects(obj[i], obj1[i])) {
           return false;
         }
       }
-      else if (isObject(obj[key])) {
-        if (!compareObjects(obj[key], obj1[key])) {
+      else if (isDate(obj[i])) {
+        if (!compareDates(obj[i], obj1[i])) {
           return false;
         }
       }
-      else if (obj[key] !== obj1[key]) {
-        return false;
+      else {
+        if (obj[i] !== obj1[i]) {
+          return false;
+        }
       }
     }
+  };
+
+  function compareArrays(obj, obj1) {
+    if (!isArray(obj1)) return false;
+    if (obj.length !== obj1.length) return false;
+    var equal = compare(obj, obj1);
+    return equal;
+  };
+
+  function compareObjects(obj, obj1) {
+    if (!isObject(obj1)) return false;
     for (let key in obj1) {
       if (obj[key] === undefined) {
         return false;
       }
     }
+    var equal = compare(obj, obj1);
+    return equal;
+  };
+
+  function compareDates(obj, obj1) {
+    if (!isDate(obj1[key]) || obj.getTime() !== obj1.getTime()) {
+      return false;
+    }
     return true;
-  }
-  objs.forEach((obj, i) => {
+  };
+
+  for (let i in objs) {
     if (objs[i+1] !== undefined) {
       if (isArray(objs[i])) {
-        if (!isArray(objs[i+1]) || !compareArrays(objs[i], objs[i+1]) {
-          equal = false;
+        if (!compareArrays(objs[i], objs[i+1])) {
+          return false;
+        }
+      }
+      else if (isDate(objs[i])) {
+        if (!compateDates(objs[i], objs[i+1])) {
+          return false;
         }
       }
       else if (isObject(objs[i])) {
-        if (!isObject(objs[i+1]) || !compareObjects(objs[i], objs[i+1]) {
-          equal = false;
+        if (!compareObjects(objs[i], objs[i+1])) {
+          return false;
         }
       }
-      equal = false;
+      else {
+        if (obj[i] !== obj1[i]) {
+          return false;
+        }
+      }
     }
-  });
-  return equal;
+  };
+
+  return true;
 };
 
 function isArray(obj) {
@@ -77,10 +95,14 @@ function isArray(obj) {
 }
 
 function isObject(obj) {
-  return typeof obj === 'object' && obj !== null && Array.isArray(obj) == false;
+  return typeof obj === 'object' && obj !== null && Array.isArray(obj) == false && !(obj instanceof Date);
 }
 
-// console.log(deepEqual({a: 1, b: 2}, {a: 1, b: 2}));
+function isDate(obj) {
+  return obj instanceof Date;
+}
+
+// console.log(isEqual({a: 1, b: 2}, {a: 1, b: 2}));
 // return;
 
 
@@ -159,25 +181,25 @@ var expected = {
 
 describe('functional-object-assign tests', () => {
   it ('should properly assign new values', () => {
-    expect(deepEqual(actual, expected)).to.be.true;
+    expect(isEqual(actual, expected)).to.be.true;
   });
-  // it ('should not reference the src objects - when a src obj is mutated', () => {
-  //   obj.a = 99;
-  //   expect(deepEqual(actual, expected)).to.be.true;
-  //   obj1.a = 99;
-  //   expect(deepEqual(actual, expected)).to.be.true;
-  // });
-  // it ('should not reference the src objects - when a src array is mutated', () => {
-  //   obj2.h.push(99);
-  //   expect(deepEqual(actual, expected)).to.be.true;
-  //   array.push(99);
-  //   expect(deepEqual(actual, expected)).to.be.true;
-  //
-  // });
-  // it ('should not reference the src objects - when a nested src array is mutated', () => {
-  //   nestedArray.push(99);
-  //   expect(deepEqual(actual, expected)).to.be.true;
-  //   obj2.h[1].push(99);
-  //   expect(deepEqual(actual, expected)).to.be.true;
-  // });
+  it ('should not reference the src objects - when a src obj is mutated', () => {
+    obj.a = 99;
+    expect(isEqual(actual, expected)).to.be.true;
+    obj1.a = 99;
+    expect(isEqual(actual, expected)).to.be.true;
+  });
+  it ('should not reference the src objects - when a src array is mutated', () => {
+    obj2.h.push(99);
+    expect(isEqual(actual, expected)).to.be.true;
+    array.push(99);
+    expect(isEqual(actual, expected)).to.be.true;
+
+  });
+  it ('should not reference the src objects - when a nested src array is mutated', () => {
+    nestedArray.push(99);
+    expect(isEqual(actual, expected)).to.be.true;
+    obj2.h[1].push(99);
+    expect(isEqual(actual, expected)).to.be.true;
+  });
 });
