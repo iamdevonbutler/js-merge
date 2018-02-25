@@ -1,4 +1,6 @@
-# Functional object assign [![Build Status](https://travis-ci.org/iamdevonbutler/js-object-assign.svg?branch=master)](https://travis-ci.org/iamdevonbutler/js-object-assign)
+# js-object-assign [![Build Status](https://travis-ci.org/iamdevonbutler/js-object-assign.svg?branch=master)](https://travis-ci.org/iamdevonbutler/js-object-assign)
+
+Functional recursive object assign.
 
 **Requires: node >= 9**
 
@@ -14,7 +16,6 @@ const objectAssign = require('js-object-assign');
 var obj = {
   a: 1,
 };
-
 
 var obj1 = {
   a: 1,
