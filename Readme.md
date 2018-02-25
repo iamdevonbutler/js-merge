@@ -1,15 +1,15 @@
-# Functional object assign [![Build Status](https://travis-ci.org/iamdevonbutler/functional-object-assign.svg?branch=master)](https://travis-ci.org/iamdevonbutler/functional-object-assign)
+# Functional object assign [![Build Status](https://travis-ci.org/iamdevonbutler/js-object-assign.svg?branch=master)](https://travis-ci.org/iamdevonbutler/js-object-assign)
 
 **Requires: node >= 9**
 
 ## Installation
 ```
-npm i --save functional-object-assign
+npm i --save js-object-assign
 ```
 
 ## Example
 ```javascript
-const objectAssign = require('functional-object-assign');
+const objectAssign = require('js-object-assign');
 
 var obj = {
   a: 1,
