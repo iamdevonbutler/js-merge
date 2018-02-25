@@ -61,6 +61,7 @@ var expected = {
 
 describe('js-object-assign tests', () => {
   it ('should properly assign new values', () => {
+    console.log(actual, expected);
     expect(isEqual(actual, expected)).to.be.true;
   });
   it ('should not reference the src objects - when a src obj is mutated', () => {
