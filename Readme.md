@@ -2,7 +2,7 @@
 
 Functional recursive object assign.
 
-**Requires: node >= 9**
+**engines: node >= 9.x**
 
 ## Installation
 ```
