@@ -60,8 +60,11 @@ var expected = {
 };
 
 describe('js-object-assign tests', () => {
+  it ('should ignore non-object values', () => {
+    var result = objectAssign({a: 1}, null, {}, [], false, 1, '', 'str', () => {});
+    expect(isEqual(result, {a: 1})).to.be.true;
+  });
   it ('should properly assign new values', () => {
-    console.log(actual, expected);
     expect(isEqual(actual, expected)).to.be.true;
   });
   it ('should not reference the src objects - when a src obj is mutated', () => {
