@@ -1,17 +1,17 @@
-# js-object-assign [![Build Status](https://travis-ci.org/iamdevonbutler/js-object-assign.svg?branch=master)](https://travis-ci.org/iamdevonbutler/js-object-assign)
+# js-assign [![Build Status](https://travis-ci.org/iamdevonbutler/js-object-assign.svg?branch=master)](https://travis-ci.org/iamdevonbutler/js-assign)
 
-Functional recursive object assign.
+Functional recursive object and array assign.
 
 **engines: node >= 9.x**
 
 ## Installation
 ```
-npm i --save js-object-assign
+npm i --save iamdevonubutler/js-assign
 ```
 
 ## Example
 ```javascript
-const objectAssign = require('js-object-assign');
+const assign = require('js-assign');
 
 var obj = {
   a: 1,
@@ -32,7 +32,7 @@ var obj2 = {
   d: [obj, obj1] // Breaks Object references.
 };
 
-var result = objectAssign(obj, obj1, obj2, ...);
+var result = assign(obj, obj1, obj2, ...);
 console.log(result);
 /*
 { a: 1,
