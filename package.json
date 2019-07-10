@@ -1,7 +1,7 @@
 {
-  "name": "js-assign",
+  "name": "js-merge",
   "version": "0.1.0",
-  "description": "Functional recursive object and array assign",
+  "description": "Functional recursive Object merge",
   "main": "lib/index.js",
   "directories": {
     "lib": "lib",
@@ -12,12 +12,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iamdevonbutler/js-assign.git"
+    "url": "git+https://github.com/iamdevonbutler/js-merge.git"
   },
   "author": "Jay Pescione <jpescione@gmail.com> (https://github.com/iamdevonbutler)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/iamdevonbutler/js-assign/issues"
+    "url": "https://github.com/iamdevonbutler/js-merge/issues"
   },
   "keywords": [
     "js",
@@ -25,9 +25,10 @@
     "javascript",
     "object",
     "array",
-    "assign"
+    "merge",
+    "object assign"
   ],
-  "homepage": "https://github.com/iamdevonbutler/js-assign#readme",
+  "homepage": "https://github.com/iamdevonbutler/js-merge#readme",
   "devDependencies": {
     "chai": "4.1.2",
     "js-isequal": "0.2.0",
