@@ -1,4 +1,4 @@
-const objectAssign = require('../lib');
+const merge = require('../lib');
 const isEqual = require('js-isequal');
 
 const should = require('chai').should();
@@ -29,7 +29,7 @@ var obj2 = {
   h: array,
 };
 
-var actual = objectAssign(obj, obj1, obj2);
+var actual = merge(obj, obj1, obj2);
 
 var expectedArray = [{
   b: 3,
@@ -61,7 +61,7 @@ var expected = {
 
 describe('js-object-assign tests', () => {
   it ('should ignore non-object values', () => {
-    var result = objectAssign({a: 1}, null, {}, [], false, 1, '', 'str', () => {});
+    var result = merge({a: 1}, null, {}, [], false, 1, '', 'str', () => {});
     expect(isEqual(result, {a: 1})).to.be.true;
   });
   it ('should properly assign new values', () => {
