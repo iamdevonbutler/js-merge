@@ -1,17 +1,17 @@
-# js-assign [![Build Status](https://travis-ci.org/iamdevonbutler/js-object-assign.svg?branch=master)](https://travis-ci.org/iamdevonbutler/js-assign)
+# js-merge [![Build Status](https://travis-ci.org/iamdevonbutler/js-merge.svg?branch=master)](https://travis-ci.org/iamdevonbutler/js-assign)
 
-Functional recursive object and array assign.
+Functional recursive object merge/assign.
 
 **engines: node >= 9.x**
 
 ## Installation
 ```
-npm i --save iamdevonubutler/js-assign
+npm i --save iamdevonubutler/js-merge
 ```
 
 ## Example
 ```javascript
-const assign = require('js-assign');
+const merge = require('js-merge');
 
 var obj = {
   a: 1,
@@ -32,7 +32,7 @@ var obj2 = {
   d: [obj, obj1] // Breaks Object references.
 };
 
-var result = assign(obj, obj1, obj2, ...);
+var result = merge(obj, obj1, obj2, ...);
 console.log(result);
 /*
 { a: 1,

@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 maybe try to make it a general purpose assign that does more than just objs and arrays.
+=======
+Maybe call this merge. It’s more apropoe. 
+>>>>>>> 73f74af47aaab724d255387cad9eece7b0f3f3ac
