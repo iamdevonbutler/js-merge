@@ -1,1 +1,1 @@
-
+maybe try to make it a general purpose assign that does more than just objs and arrays.
