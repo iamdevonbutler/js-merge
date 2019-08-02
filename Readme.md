@@ -1,4 +1,4 @@
-# js-merge [![Build Status](https://travis-ci.org/iamdevonbutler/js-merge.svg?branch=master)](https://travis-ci.org/iamdevonbutler/js-assign)
+# js-merge [![Build Status](https://travis-ci.org/iamdevonbutler/js-merge.svg?branch=master)](https://travis-ci.org/iamdevonbutler/js-merge)
 
 Functional recursive object merge/assign.
 
